@@ -4,7 +4,7 @@ void Timer::start(uint32_t Delay)
 {
 	if(Delay != 0)
 	{
-		_waitTime = Delay;
+		_waitTime = _inSeconds ? Delay * 1000 : Delay;
 		_isRunning = true;
 		_time = millis();
 	}
@@ -20,7 +20,7 @@ void Timer::restart(uint32_t NewDelay = 0)
 {
 	if(NewDelay != 0 && NewDelay != _waitTime)
 	{
-		_waitTime = NewDelay;
+		_waitTime = _inSeconds ? NewDelay * 1000 : NewDelay;
 	}
 	_time = millis();
 	_isRunning = true;
