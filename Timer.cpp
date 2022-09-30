@@ -2,7 +2,7 @@
 
 void Timer::start(uint32_t Delay)
 {
-	if(Delay != 0)
+	if(Delay != 0 && !_isRunning)
 	{
 		_waitTime = _inSeconds ? Delay * 1000 : Delay;
 		_isRunning = true;
