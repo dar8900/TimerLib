@@ -16,7 +16,7 @@ void Timer::stop()
 	_time = 0;
 }
 
-void Timer::restart(uint32_t NewDelay = 0)
+void Timer::restart(uint32_t NewDelay)
 {
 	if(NewDelay != 0 && NewDelay != _waitTime)
 	{
@@ -31,7 +31,7 @@ bool Timer::isRunning()
 	return _isRunning;
 }
 
-bool Timer::isOver(bool Restart = false, uint32_t NewDelay)
+bool Timer::isOver(bool Restart, uint32_t NewDelay)
 {
 	bool End = false;
 	if(_isRunning)
