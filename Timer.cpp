@@ -16,6 +16,19 @@ void Timer::stop()
 	_time = 0;
 }
 
+bool Timer::elapsed()
+{
+	if(_isRunning)
+	{
+		if(millis() - _time >= _waitTime){
+			return true;
+		}else {
+			return false;
+		}
+	}
+	return false;
+}
+
 void Timer::restart(uint32_t NewDelay)
 {
 	if(NewDelay != 0 && NewDelay != _waitTime)
@@ -34,16 +47,13 @@ bool Timer::isRunning()
 bool Timer::isOver(bool Restart, uint32_t NewDelay)
 {
 	bool End = false;
-	if(_isRunning)
+	if(elapsed())
 	{
-		if(millis() - _time >= _waitTime)
+		End = true;
+		stop();
+		if(Restart)
 		{
-			End = true;
-			stop();
-			if(Restart)
-			{
-				restart(NewDelay);
-			}
+			restart(NewDelay);
 		}
 	}
 	return End;

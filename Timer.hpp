@@ -13,6 +13,7 @@ class Timer
 		void restart(uint32_t NewDelay = 0);
 		bool isRunning();
 		bool isOver(bool Restart = false, uint32_t NewDelay = 0);
+		bool elapsed();
 	private:
 		bool _inSeconds = false;
 		uint32_t _time = 0;
